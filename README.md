@@ -2,19 +2,20 @@
 This project is an in-progress conceptual idea designed around the storage, compression, categorization, and retrieval of high-resolution images. Additionally, it incorporates features for monitoring costs and analyzing data usage, while staying within the AWS Free Tier. The architecture is defined using Terraform, for the sake of consolidated and easy IaC configuration.
 
 ## Features
-*Image Upload & Compression: Users can upload high-resolution images, which are automatically compressed to reduce storage footprint.
 
-*Image Categorization: Uploaded images are analyzed and categorized using Amazon Rekognition, allowing for easy organization and searchability.
+-Image Upload & Compression: Users can upload high-resolution images, which are automatically compressed to reduce storage footprint.
 
-*Thumbnail Generation: Thumbnails are generated for quick preview and stored alongside the compressed images.
+-Image Categorization: Uploaded images are analyzed and categorized using Amazon Rekognition, allowing for easy organization and searchability.
 
-*Data Analytics with AWS QuickSight: Analyze image usage, popular categories, and user activity through dynamic visualizations.
+-Thumbnail Generation: Thumbnails are generated for quick preview and stored alongside the compressed images.
 
-*Metadata Storage: Image metadata, including categories and tags, are stored in DynamoDB for efficient querying and retrieval.
+-Data Analytics with AWS QuickSight: Analyze image usage, popular categories, and user activity through dynamic visualizations.
 
-*Cost Monitoring with AWS Budgets: Monitor costs and receive alerts to ensure the project remains within the AWS Free Tier limits.
+-Metadata Storage: Image metadata, including categories and tags, are stored in DynamoDB for efficient querying and retrieval.
 
-*Service Monitoring with CloudWatch: Track service performance, set up alarms, and log all operational metrics to maintain a robust and reliable system.
+-Cost Monitoring with AWS Budgets: Monitor costs and receive alerts to ensure the project remains within the AWS Free Tier limits.
+
+-Service Monitoring with CloudWatch: Track service performance, set up alarms, and log all operational metrics to maintain a robust and reliable system.
 
 ## Architecture
 ![Diagram](imagemanagement.drawio.png)
