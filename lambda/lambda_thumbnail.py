@@ -16,16 +16,20 @@ def lambda_handler(event, context):
     # Open the image using PIL
     image = Image.open(io.BytesIO(image_content))
     
-    # Compress the image
-    compressed_image_io = io.BytesIO()
-    image.save(compressed_image_io, format='JPEG', quality=70)  # Adjust quality as needed
-    compressed_image_io.seek(0)
+    # Create a thumbnail (e.g., 128x128)
+    thumbnail_size = (128, 128)
+    image.thumbnail(thumbnail_size)
     
-    # Save the compressed image back to S3
-    compressed_object_key = f"compressed/{object_key}"
-    s3.put_object(Bucket=bucket_name, Key=compressed_object_key, Body=compressed_image_io)
+    # Save the thumbnail to an in-memory file
+    thumbnail_io = io.BytesIO()
+    image.save(thumbnail_io, format='JPEG')
+    thumbnail_io.seek(0)
+    
+    # Save the thumbnail back to S3
+    thumbnail_object_key = f"thumbnails/{object_key}"
+    s3.put_object(Bucket=bucket_name, Key=thumbnail_object_key, Body=thumbnail_io)
     
     return {
         'statusCode': 200,
-        'body': f'Compressed image saved to {compressed_object_key}'
+        'body': f'Thumbnail saved to {thumbnail_object_key}'
     }
